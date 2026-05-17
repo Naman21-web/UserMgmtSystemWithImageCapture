@@ -13,7 +13,21 @@ connectDB();
 
 // Middleware
 app.use(cors({
-  origin: ['http://localhost:4200', 'http://127.0.0.1:4200', 'http://localhost:3000'],
+  origin: (origin, callback) => {
+    const allowed = [
+      /localhost/,
+      /127\.0\.0\.1/,
+      /\.ngrok-free\.app$/,
+      /\.ngrok-free\.dev$/,
+      /\.ngrok\.io$/,
+      /\.vercel\.app$/,
+    ];
+    if (!origin || allowed.some((pattern) => pattern.test(origin))) {
+      callback(null, true);
+    } else {
+      callback(new Error(`CORS: origin ${origin} not allowed`));
+    }
+  },
   credentials: true,
 }));
 app.use(express.json({ limit: '50mb' }));
