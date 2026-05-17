@@ -1,17 +1,8 @@
 {
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist/user-management-frontend"
-      }
-    }
-  ],
+  "buildCommand": "ng build",
+  "outputDirectory": "dist/user-management-frontend/browser",
+  "framework": "angular",
   "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
