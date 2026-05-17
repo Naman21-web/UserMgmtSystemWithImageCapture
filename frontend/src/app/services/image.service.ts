@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
+import { APIUrl } from '../../environment';
 
 @Injectable({ providedIn: 'root' })
 export class ImageService {
-  private apiUrl = 'http://localhost:5000/api/images';
+  // private apiUrl = 'http://localhost:5000/api/images';
+  private apiUrl = APIUrl + '/api/images';
 
   // Cache object URLs so we don't re-fetch the same image
   private urlCache = new Map<string, string>();

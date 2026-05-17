@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { APIUrl } from '../../environment';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
-  private apiUrl = 'http://localhost:5000/api/users';
+  // private apiUrl = 'http://localhost:5000/api/users';
+  private apiUrl = APIUrl + '/api/users';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    console.log('UserService initialized with API URL:', this.apiUrl);
+  }
 
   getAllUsers(filters?: { role?: string; search?: string; isActive?: boolean }): Observable<any> {
     let params = new HttpParams();

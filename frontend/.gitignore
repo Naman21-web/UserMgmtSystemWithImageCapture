@@ -1,0 +1,11 @@
+# Dependencies
+node_modules/
+.yarn/
+dist/
+
+# IDE
+.vscode/
+.idea/
+
+# Environment files (deployment-specific)
+src/environment.prod.ts
